@@ -1,0 +1,16 @@
+functions	    doublerInsert	doublerAppend
+
+tinyArray	    34.4us		87.5us
+smallArray	    45.1us		101.6us
+mediumArray 	191us		191.6us
+largeArray  	9.29ms	 	565us
+extraLargeArray	1.24s		3.74ms
+
+the doublerInsert function scales exponentially and the doublerAppend scales linearly.
+
+the doublerAppend scales better in this case because is scales much less compared to doublerInsert.
+
+The reason why doublerAppend scales better than doublerInsert is because when you append a value into an array using the .push
+method, it adds it to the end of the array, which requires zero shifting of values previously stored. The doublerInsert uses
+the .unshift method, which adds it to the beginning of the array, requiring the rest of the array to shift up an index, which
+creates the exponential scaling.
